@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+session_start();    
 
 /*
  * En caso de que un usuario este logueado, se le redirija a la pagina que le
@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
     header("Location: admin.php");
 
-  } else if($_SESSION['tipo'] == '2'){
+  } else if($_SESSION['type'] == '2'){
 
     header("Location: employee.php");
 
@@ -77,31 +77,31 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
         <div class="row">
           <div class="input-field col s12 center">
             <img src="img/login-logo.png" alt="" class="responsive-img valign profile-image-login">
-            <p class="center login-form-text">Catering manager</p>
+            <p class="center login-form-text"></p>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input class="validate" id="email" type="email">
-            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+            <input id="user" type="text" name="user">
+            <label for="user" data-error="wrong" data-success="right" class="center-align">Usuario</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
-            <input id="password" type="password">
-            <label for="password">Password</label>
+            <input id="password" type="password" name="pass">
+            <label for="password">Contraseña</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="#" class="btn waves-effect waves-light col s12">Login</a>
+            <a href="#" class="btn waves-effect waves-light col s12">Iniciar sesión</a>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="register.html">Registrarsr</a></p>
+          <div class="input-field col s12">
+            <p class="margin medium-small"><a href="#">Registrarse</a></p>
           </div>        
         </div>
 
