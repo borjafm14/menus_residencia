@@ -8,7 +8,6 @@ session_start();
  */
 if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
-  /* Tengo que mirar el tipo de usuario que la ha iniciado */
   if($_SESSION['type'] == '1'){
 
     header("Location: admin.php");
@@ -51,7 +50,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
   
 </head>
 
-<body class="red">
+<body class="grey">
 
 
   <div id="login-page" class="row">
@@ -76,8 +75,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="img/login-logo.png" alt="" class="responsive-img valign profile-image-login">
-            <p class="center login-form-text"></p>
+            <img src="img/login-logo.png" alt="" class="responsive-img valign logo-small">
           </div>
         </div>
         <div class="row margin">
@@ -96,12 +94,12 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="#" class="btn waves-effect waves-light col s12">Iniciar sesión</a>
+            <button type="submit" class="btn waves-effect waves-light col s12 light-green darken-1">Iniciar sesión</button>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <p class="margin medium-small"><a href="#">Registrarse</a></p>
+            <p class="margin medium-small center-align"><a class="black-text" href="#">Registrarse</a></p>
           </div>        
         </div>
 
@@ -117,9 +115,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
 <?php
 
-/*
- * Funcion empleada para mostrar el error
- */
+
 function showerror(){
 
   /* Si esta variable existe, es que se ha producido un error */
