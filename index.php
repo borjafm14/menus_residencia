@@ -36,6 +36,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="img/logo-mini.png">
   <title>Catering manager</title>
 
   <script type="text/javascript" src="js/script.js"></script>
@@ -50,7 +51,7 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
   
 </head>
 
-<body class="grey">
+<body background="img/background.jpg">
 
 
   <div id="login-page" class="row">

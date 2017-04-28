@@ -2,7 +2,7 @@
 
 
 //cambiar cuando se ponga en la rasp
-define ('NOMBRE_USUARIO_DB', 'borja'); 
+define ('NOMBRE_USUARIO_DB', 'menus_residencia'); 
 define ('PASS_USUARIO_DB', '891995');
 define ('NOMBRE_DB', 'menus_residencia');
 define ('SERVIDOR_DB', 'localhost');
