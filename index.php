@@ -74,11 +74,14 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
          ?>
 
+        
         <div class="row">
           <div class="input-field col s12 center">
             <img src="img/login-logo.png" alt="" class="responsive-img valign logo-small">
           </div>
         </div>
+
+
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
@@ -122,11 +125,12 @@ function showerror(){
   /* Si esta variable existe, es que se ha producido un error */
   if(isset($_SESSION['error'])){
 
-     /* Muestro el error */
-     echo "<p class = \"error\" >" . $_SESSION['error'] . "</p><br><br>";
+    echo "<script type=\"text/javascript\">";
+    echo "Materialize.toast(\"Usuario o contraseña incorrectos\", 3000, \"light-green darken-1\");";
+    echo "</script>";
 
-     /* Elimino la variable para no volver a entrar a este error. */
-     unset($_SESSION['error']);
+    /* Elimino la variable para no volver a entrar a este error. */
+    unset($_SESSION['error']);
 
    }
 }
