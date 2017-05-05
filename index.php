@@ -101,11 +101,6 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
             <button type="submit" class="btn waves-effect waves-light col s12 light-green darken-1">Iniciar sesión</button>
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <p class="margin medium-small center-align"><a class="black-text" href="#">Registrarse</a></p>
-          </div>        
-        </div>
 
       </form>
     </div>

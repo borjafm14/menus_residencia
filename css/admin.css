@@ -1,0 +1,22 @@
+
+/*admin, employee y user phps*/
+#navbar{
+  --height: 100px;
+  --line-height: 100px;
+  background-color: #37474f;
+}
+
+#navbar-fixed{
+  padding-bottom: 75px;
+}
+
+.logo-mini{
+  margin: 8px;
+  width: 50px;
+  border-radius: 20px;
+}
+
+.img{
+	width: 40px;
+	display: inline; 
+}
