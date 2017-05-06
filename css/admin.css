@@ -11,12 +11,23 @@
 }
 
 .logo-mini{
-  margin: 8px;
-  width: 50px;
-  border-radius: 20px;
+  margin: 5px;
+  margin-left: 10px;
+  width: 65px;
+  border-radius: 5px;
 }
 
 .img{
 	width: 40px;
 	display: inline; 
+}
+
+.material-icons:hover{
+	color: #7cb342 !important;
+}
+
+.title-navbar{
+	font-size: 18px;
+	margin-left: 5px;
+	font-weight: bold;
 }

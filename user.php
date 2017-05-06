@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])){
     header('Location: index.php');
     die();
 
-}else if ($_SESSION['type'] != 1){
+}else if ($_SESSION['type'] != 3){
 
     header('Location: index.php');
     die();
@@ -48,8 +48,12 @@ if (!isset($_SESSION['user'])){
       <div class="nav-wrapper">
 
         <ul class="left">
-          <img class="responsive-img logo-mini" src="img/user.jpg">
+          <img class="responsive-img logo-mini" src="img/logo-mini-white.jpg">
         </ul>
+
+        <?php
+        echo "<span class=title-navbar>" . $_SESSION['user'] . "</span>";
+        ?>
 
         <ul class="right">
           <li><a href="logout.php"><i class="material-icons">power_settings_new</i></a></li>
