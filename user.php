@@ -62,6 +62,13 @@ if (!isset($_SESSION['user'])){
     </nav>
   </div>
 
+  <div id="menu">
+    <ul>
+      <li><a href="">Elegir menú</a></li>
+      <li><a href="">Sugerencias</a></li>
+    </ul>
+  </div>
+
   <div id="content" class="row">
   <!--Parte central tocha con el contenido-->
   </div>
