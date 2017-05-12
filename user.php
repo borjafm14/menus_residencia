@@ -64,13 +64,15 @@ if (!isset($_SESSION['user'])){
 
   <div id="menu">
     <ul>
-      <li><a href="">Elegir menú</a></li>
-      <li><a href="">Sugerencias</a></li>
+      <li><a href="user.php?type=menus">Elegir menú</a></li>
+      <li><a href="user.php?type=suggestions">Sugerencias</a></li>
     </ul>
   </div>
 
   <div id="content" class="row">
-  <!--Parte central tocha con el contenido-->
+    <?php
+      getContent();
+    ?>
   </div>
 
   
@@ -82,3 +84,17 @@ if (!isset($_SESSION['user'])){
 </html>
 
 
+<?php
+  function getContent(){
+    if($_GET['type'] == 'menus'){
+      echo "<center><p>Administrar menús</p></center>";
+    }
+    elseif($_GET['type'] == 'suggestions'){
+      echo "<center><p>Administrar Sugerencias</p></center>";
+    }
+    else{
+      echo "<center><p>WTF</p></center>";
+    }
+
+  }
+?>

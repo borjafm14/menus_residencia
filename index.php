@@ -10,15 +10,15 @@ if(isset($_SESSION['user'])){ /* Si un usuario ha iniciado sesion */
 
   if($_SESSION['type'] == '1'){
 
-    header("Location: admin.php");
+    header("Location: admin.php?type=menus");
 
   } else if($_SESSION['type'] == '2'){
 
-    header("Location: employee.php");
+    header("Location: employee.php?type=menus");
 
   }else{
 
-    header("Location: user.php");
+    header("Location: user.php?type=menus");
 
   }
 

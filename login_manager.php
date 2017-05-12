@@ -81,16 +81,16 @@ function accesoCuenta(){
   if ($tipo_usuario == 1) {
 
 
-    header('Location: admin.php');
+    header('Location: admin.php?type=menus');
 
 
   } else if($tipo_usuario == 2){
 
-    header('Location: employee.php');
+    header('Location: employee.php?type=menus');
 
   }else{
 
-    header('Location: user.php');
+    header('Location: user.php?type=menus');
 
   }
 

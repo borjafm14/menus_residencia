@@ -64,14 +64,17 @@ if (!isset($_SESSION['user'])){
 
   <div id="menu">
     <ul>
-      <li><a href="">Administrar usuarios</a></li>
-      <li><a href="">Informes</a></li>
-      <li><a href="">Avisos</a></li>
+      <li><a href="employee.php?type=menus">Administrar menús</a></li>
+      <li><a href="employee.php?type=users">Administrar usuarios</a></li>
+      <li><a href="employee.php?type=reports">Informes</a></li>
+      <li><a href="employee-php?type=notifications">Avisos</a></li>
     </ul>
   </div>  
 
   <div id="content" class="row">
-  <!--Parte central tocha con el contenido-->
+   <?php
+      getContent();
+    ?>
   </div>
 
   
@@ -83,3 +86,23 @@ if (!isset($_SESSION['user'])){
 </html>
 
 
+<?php
+  function getContent(){
+    if($_GET['type'] == 'menus'){
+      echo "<center><p>Administrar menús</p></center>";
+    }
+    elseif($_GET['type'] == 'users'){
+      echo "<center><p>Administrar usuarios</p></center>";
+    }
+    elseif($_GET['type'] == 'reports'){
+      echo "<center><p>Administrar informes</p></center>";
+    }
+    elseif($_GET['type'] == 'notifications'){
+      echo "<center><p>Administrar avisos</p></center>";
+    }
+    else{
+      echo "<center><p>WTF</p></center>";
+    }
+
+  }
+?>

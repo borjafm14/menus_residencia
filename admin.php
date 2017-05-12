@@ -64,17 +64,19 @@ if (!isset($_SESSION['user'])){
 
   <div id="menu">
     <ul>
-      <li><a href="">Crear menú</a></li>
-      <li><a href="">Administrar usuarios</a></li>
-      <li><a href="">Almacén</a></li>
-      <li><a href="">Informes</a></li>
-      <li><a href="">Avisos</a></li>
-      <li><a href="">Sugerencias</a></li>
+      <li><a href="admin.php?type=menus">Crear menú</a></li>
+      <li><a href="admin.php?type=users">Administrar usuarios</a></li>
+      <li><a href="admin.php?type=store">Almacén</a></li>
+      <li><a href="admin.php?type=reports">Informes</a></li>
+      <li><a href="admin.php?type=notifications">Avisos</a></li>
+      <li><a href="admin.php?type=suggestions">Sugerencias</a></li>
     </ul>
   </div>
 
   <div id="content" class="row">
-  <!--Parte central tocha con el contenido-->
+    <?php
+      getContent();
+    ?>
   </div>
 
   
@@ -84,5 +86,34 @@ if (!isset($_SESSION['user'])){
 </body>
 
 </html>
+
+
+
+<?php
+  function getContent(){
+    if($_GET['type'] == 'menus'){
+      echo "<center><p>Administrar menús</p></center>";
+    }
+    elseif($_GET['type'] == 'users'){
+      echo "<center><p>Administrar usuarios</p></center>";
+    }
+    elseif($_GET['type'] == 'store'){
+      echo "<center><p>Administrar Almacén</p></center>";
+    }
+    elseif($_GET['type'] == 'reports'){
+      echo "<center><p>Administrar informes</p></center>";
+    }
+    elseif($_GET['type'] == 'notifications'){
+      echo "<center><p>Administrar avisos</p></center>";
+    }
+    elseif($_GET['type'] == 'suggestions'){
+      echo "<center><p>Administrar Sugerencias</p></center>";
+    }
+    else{
+      echo "<center><p>WTF</p></center>";
+    }
+
+  }
+?>
 
 
