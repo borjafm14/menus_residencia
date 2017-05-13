@@ -15,6 +15,15 @@ if (!isset($_SESSION['user'])){
 
 }
 
+  Include('connector_db.php');
+
+
+
+  /* Variable global para almacenar la query*/
+  $query;
+
+  $conection = establecerConexionDB();
+
 ?>
 
 
@@ -28,21 +37,175 @@ if (!isset($_SESSION['user'])){
   <link rel="icon" href="img/logo-mini.png">
   <title>Catering manager</title>
 
-  <!--<script type="text/javascript" src="js/script.js"></script>-->
-
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
+  <script src="js/admin.js"></script>
+  <link rel="stylesheet" href="css/admin.css">
 
   
 </head>
 
 <body>
+
+  <!--modal enoooooooooorme de crear menu-->
+  <div id="modal_menu" class="modal">
+    <div class="modal-content">
+      <form name="form_menu" action="save_menu_form.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
+
+      <h4 class="center-align">Lunes</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidalunes1" id="comidalunes1">
+        <label for="comidalunes1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidalunes2" id="comidalunes2">
+        <label for="comidalunes2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenalunes1" id="cenalunes1">
+        <label for="cenalunes1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenalunes2" id="cenalunes2">
+        <label for="cenalunes2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Martes</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidamartes1" id="comidamartes1">
+        <label for="comidamartes1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidamartes2" id="comidamartes2">
+        <label for="comidamartes2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenamartes1" id="cenamartes1">
+        <label for="cenamartes1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenamartes2" id="cenamartes2">
+        <label for="cenamartes2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Miércoles</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidamiercoles1" id="comidamiercoles1">
+        <label for="comidamiercoles1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidamiercoles2" id="comidamiercoles2">
+        <label for="comidamiercoles2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenamiercoles1" id="cenamiercoles1">
+        <label for="cenamiercoles1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenamiercoles2" id="cenamiercoles2">
+        <label for="cenamiercoles2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Jueves</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidajueves1" id="comidajueves1">
+        <label for="comidajueves1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidajueves2" id="comidajueves2">
+        <label for="comidajueves2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenajueves1" id="cenajueves1">
+        <label for="cenajueves1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenajueves2" id="cenajueves2">
+        <label for="cenajueves2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Viernes</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidaviernes1" id="comidaviernes1">
+        <label for="comidaviernes1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidaviernes2" id="comidaviernes2">
+        <label for="comidaviernes2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenaviernes1" id="cenaviernes1">
+        <label for="cenaviernes1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenaviernes2" id="cenaviernes2">
+        <label for="cenaviernes2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Sábado</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidasabado1" id="comidasabado1">
+        <label for="comidasabado1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidasabado2" id="comidasabado2">
+        <label for="comidasabado2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenasabado1" id="cenasabado1">
+        <label for="cenasabado1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenasabado2" id="cenasabado2">
+        <label for="cenasabado2">Cena 2</label>
+      </div>
+
+      <br><h4 class="center-align">Domingo</h4>
+
+      <div class="input-field">
+        <input type="text" name="comidadomingo1" id="comidadomingo1">
+        <label for="comidadomingo1">Comida 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="comidadomingo2" id="comidadomingo2">
+        <label for="comidadomingo2">Comida 2</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" name="cenadomingo1" id="cenadomingo1">
+        <label for="cenadomingo1">Cena 1</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="cenadomingo2" id="cenadomingo2">
+        <label for="cenadomingo2">Cena 2</label>
+      </div>
+
+      <button type="submit" class="btn waves-effect waves-light col s2 light-green darken-1 center-align">Crear menú</button>
+
+      </form>
+    </div>
+  </div>
+
+  <!--fin modal menus-->
+
+
+
   <div class="navbar-fixed">
     <nav id="navbar" class="row" role="navigation">
       <div class="nav-wrapper">
@@ -79,8 +242,6 @@ if (!isset($_SESSION['user'])){
     ?>
   </div>
 
-  
-
 
 
 </body>
@@ -91,9 +252,13 @@ if (!isset($_SESSION['user'])){
 
 <?php
   function getContent(){
+
     if($_GET['type'] == 'menus'){
-      echo "<center><p>Administrar menús</p></center>";
+
+      menuContent();
+
     }
+
     elseif($_GET['type'] == 'users'){
       echo "<center><p>Administrar usuarios</p></center>";
     }
@@ -112,6 +277,35 @@ if (!isset($_SESSION['user'])){
     else{
       echo "<center><p>WTF</p></center>";
     }
+
+
+    
+
+  }
+
+
+
+
+
+  function menuContent(){
+    global $query, $conection,$nombre_usuario, $pass;
+
+    $sentence = "SELECT * FROM MENU_FORMS WHERE active = 1";
+
+    $query = mysqli_query($conection, $sentence) or die(ERROR_CONSULTA_DB);
+
+    if(mysqli_num_rows($query) == 0){
+      echo '<h4 class="no_result center-align">Aún no ha creado ningún menú</h4>';
+
+      echo '<button onclick="$(\'#modal_menu\').modal(\'open\')" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Crear menú</button>';
+    }
+    else{
+      echo "menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu";
+    }
+
+
+    mysqli_close($conection);
+
 
   }
 ?>
