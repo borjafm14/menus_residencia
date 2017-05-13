@@ -29,11 +29,21 @@
 }
 
 .center-button{
-  margin-left: 450px !important;
+  margin-top: 20px !important;
+  margin-left: 435px !important;
 }
 
 #content{
   margin-left: 200px;
+}
+
+#container{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#table{
+  margin-top: 30px;
 }
 
 .material-icons:hover{
@@ -83,6 +93,8 @@
     color: #7cb342;
 }
 
+
+
 /* label underline focus color */
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #7cb342;
@@ -93,7 +105,21 @@
     box-shadow: 0 1px 0 0 #7cb342;
 }
 
+
+
 /* icon prefix focus color */
 .input-field .prefix.active {
     color: #7cb342;
+}
+
+
+[type="radio"]:checked + label:before {
+border-radius: 50%;
+border: 2px solid #7cb342; 
+}
+
+[type="radio"]:checked + label:after {
+border-radius: 50%;
+border: 2px solid #7cb342;
+background-color: #7cb342;
 }

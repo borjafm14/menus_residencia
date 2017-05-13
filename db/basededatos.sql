@@ -258,7 +258,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addMenu
-	(IN user VARCHAR(50),
+	(IN userIn VARCHAR(50),
 	IN monday_lunch VARCHAR(100),
 	IN monday_dinner VARCHAR(100),
 	IN tuesday_lunch VARCHAR(100),
@@ -276,7 +276,9 @@ CREATE PROCEDURE addMenu
 
 BEGIN
 
-	UPDATE MENUS SET active = (active - 1) WHERE user = user;
+	DECLARE last_id INT;
+
+	UPDATE MENUS SET active = (active - 1) WHERE user = userIn;
 
 	INSERT INTO MENUS(
 		monday_lunch,
@@ -312,10 +314,12 @@ BEGIN
 		sunday_lunch,
 		sunday_dinner,
 		1,
-		user
+		userIn
 	);
 
-	UPDATE USERS SET id_menu = LAST_INSERT_ID() WHERE user = user;
+	SET last_id = (SELECT MAX(id) FROM MENUS);
+
+	UPDATE USERS SET id_menu = last_id WHERE user = userIn;
 	
 END //
 DELIMITER ;
@@ -442,5 +446,39 @@ VALUES(
 	'Admin Admin',
 	'admin@admin.es',
 	1
+);
+
+INSERT INTO USERS(
+	user,
+	pass,
+	first_name,
+	last_name,
+	email,
+	type
+)
+VALUES(
+	'bfernm04',
+	'891995',
+	'Borja',
+	'Fernández Morán',
+	'borja@borja.es',
+	3
+);
+
+INSERT INTO USERS(
+	user,
+	pass,
+	first_name,
+	last_name,
+	email,
+	type
+)
+VALUES(
+	'empleado',
+	'empleado',
+	'Empleado',
+	'Empleado Empleado',
+	'empleado@empleado.es',
+	2
 );
 

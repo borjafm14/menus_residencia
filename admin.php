@@ -300,9 +300,88 @@ if (!isset($_SESSION['user'])){
       echo '<button onclick="$(\'#modal_menu\').modal(\'open\')" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Crear menú</button>';
     }
     else{
-      echo "menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu";
+      echo '<div class="row" id="container">';
+      echo '<button onclick="$(\'#modal_menu\').modal(\'open\')" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Crear nuevo menú</button>';
+
+      echo '<h4 class="col s12 center-align">Menú actual</h4>';
+
+      $menu = mysqli_fetch_array($query);
+
+
+      echo '<br><h5 id="table" class="col s12">Lunes</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['monday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['monday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['monday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['monday_dinner2'] . '</div>';
+
+
+
+      echo '<br><h5 id="table" class="col s12">Martes</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['tuesday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['tuesday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['tuesday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['tuesday_dinner2'] . '</div>';
+
+
+
+      echo '<br><h5 id="table" class="col s12">Miércoles</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['wednesday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['wednesday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['wednesday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['wednesday_dinner2'] . '</div>';
+
+
+      echo '<br><h5 id="table" class="col s12">Jueves</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['thursday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['thursday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['thursday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['thursday_dinner2'] . '</div>';
+
+
+
+      echo '<br><h5 id="table" class="col s12">Viernes</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['friday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['friday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['friday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['friday_dinner2'] . '</div>';
+
+
+
+      echo '<br><h5 id="table" class="col s12">Sábado</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['saturday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['saturday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['saturday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['satruday_dinner2'] . '</div>';
+
+
+
+      echo '<br><h5 id="table" class="col s12">Domingo</h5>';
+
+      echo '<div class="col s6">Comida 1: ' . $menu['sunday_lunch1'] . '</div>';
+      echo '<div class="col s6">Cena 1: ' . $menu['sunday_dinner1'] . '</div>';
+
+      echo '<div class="col s6">Comida 2: ' . $menu['sunday_lunch2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['sunday_dinner2'] . '</div>';
+
+
+
+      echo "</div>";
     }
 
+
+    mysqli_free_result($query);
 
     mysqli_close($conection);
 

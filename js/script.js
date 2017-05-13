@@ -7,10 +7,12 @@ function validatelogin(){
 	
 	if (usuario == "" || pass == "") {
 
-	  Materialize.toast("Se deben rellenar todos los campos", 3000);
+	  Materialize.toast("Se deben rellenar todos los campos", 3000, "light-green darken-1");
 	  return false;
 	}
 
 	return true;
 
 }
+
+
