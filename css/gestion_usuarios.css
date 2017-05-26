@@ -1,0 +1,21 @@
+#navbar{
+  --height: 100px;
+  --line-height: 100px;
+  background-color: #37474f;
+}
+
+#navbar-fixed{
+  padding-bottom: 75px;
+}
+
+.logo-mini{
+  margin: 5px;
+  margin-left: 10px;
+  width: 65px;
+  border-radius: 5px;
+}
+
+.img{
+	width: 40px;
+	display: inline; 
+}
