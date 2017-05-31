@@ -204,6 +204,30 @@ if (!isset($_SESSION['user'])){
 
   <!--fin modal menus-->
 
+  <!--modal para incorporar nuevo ingrediente-->
+  <div id="modal_ingredient" class="modal">
+    <div class="modal-content">
+      <form name="form_ingredient" action="add_ingredient.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
+
+        <h4 class="center-align">Nuevo ingrediente</h4>
+
+        <div class="input-field">
+          <input type="text" name="nombre_ingrediente" id="nombre_ingrediente">
+          <label for="nombre_ingrediente">Ingrediente</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="cantidad_inicial" id="cantidad_inicial">
+          <label for="cantidad_inicial">Cantidad inicial</label>
+        </div>      
+
+        <button type="submit" class="btn waves-effect waves-light col s2 light-green darken-1 center-align">Guardar</button>
+
+      </form>
+    </div>
+  </div>
+
+  <!--fin modal ingredientes-->
 
 
   <div class="navbar-fixed">
@@ -263,7 +287,7 @@ if (!isset($_SESSION['user'])){
       echo "<center><p>Administrar usuarios</p></center>";
     }
     elseif($_GET['type'] == 'store'){
-      echo "<center><p>Administrar Almacén</p></center>";
+      almacenView();
     }
     elseif($_GET['type'] == 'reports'){
       echo "<center><p>Administrar informes</p></center>";
@@ -277,9 +301,43 @@ if (!isset($_SESSION['user'])){
     else{
       echo "<center><p>WTF</p></center>";
     }
+  }
 
 
+  function almacenView(){
+    global $query, $conection;
+
+    echo '<div id="content" class="row">';
     
+    echo '<h4 class="col s12">Inventario del almacén</h4>';
+    echo '<button id="add_ingredient" onclick="$(\'#modal_ingredient\').modal(\'open\')" class="btn waves-effect waves-light light-green darken-1">Nuevo ingrediente</button>';
+    echo '<br><br><hr></div>';
+
+    $sentence = "SELECT * FROM STORE";
+
+    $query = mysqli_query($conection, $sentence) or die(ERROR_CONSULTA_DB);
+    
+    if(mysqli_num_rows($query) == 0){
+      echo '<h4 class="no_result center-align">No hay ningún ingrediente en el almacén</h4>';      
+    }
+
+    while($ingrediente = mysqli_fetch_array($query)) {
+      echo '<div class="col s12 m7">';
+      echo   '<div class="card horizontal">';
+      echo     '<div class="card-stacked">';
+      echo       '<div class="card-content">';
+      
+      echo       '<p>'.$ingrediente['ingredient'].'</p>';
+      echo       '<p>'.$ingrediente['quantity'].'(kg/L)</p>';
+      
+      echo       '</div>';
+      echo       '<div class="card-action">';
+      echo       '<button class="btn waves-effect waves-light light-green darken-1">Editar</button>';
+            
+      echo '</div></div></div></div>';
+    }
+    
+  
 
   }
 

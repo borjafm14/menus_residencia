@@ -174,18 +174,18 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addIngredient
-	(IN ingredient VARCHAR(100),
-	IN quantity FLOAT(7,4))
+	(IN ingredientIn VARCHAR(100),
+	IN quantityIn FLOAT(7,4))
 
 BEGIN
 	DECLARE currentQuantity FLOAT(7,4);
 
-	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredient) = 0)
+	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredientIn) = 0)
 	THEN 
-		INSERT INTO STORE(ingredient, quantity) VALUES(ingredient, quantity);
+		INSERT INTO STORE(ingredient, quantity) VALUES(ingredientIn, quantityIn);
 	ELSE
-	 	SET currentQuantity = (SELECT quantity FROM STORE WHERE ingredient = ingredient); 
-	 	UPDATE STORE SET quantity = (currentQuantity + quantity) WHERE ingredient = ingredient;
+	 	SET currentQuantity = (SELECT quantity FROM STORE WHERE ingredient = ingredientIn); 
+	 	UPDATE STORE SET quantity = (currentQuantity + quantityIn) WHERE ingredient = ingredientIn;
 	END IF;
 	
 END //
@@ -193,23 +193,23 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE removeIngredient
-	(IN ingredient VARCHAR(100),
-	IN quantity FLOAT(7,4))
+	(IN ingredientIn VARCHAR(100),
+	IN quantityIn FLOAT(7,4))
 
 BEGIN
 
 	DECLARE currentQuantity FLOAT(7,4);
 
-	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredient) > 0)
+	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredientIn) > 0)
 	THEN 
 
-	 	SET currentQuantity = (SELECT quantity FROM STORE WHERE ingredient = ingredient); 
+	 	SET currentQuantity = (SELECT quantity FROM STORE WHERE ingredient = ingredientIn); 
 
-	 	IF((currentQuantity - quantity) < 0)
+	 	IF((currentQuantity - quantityIn) < 0)
 	 	THEN 
-	 		UPDATE STORE SET quantity = 0 WHERE ingredient = ingredient;
+	 		UPDATE STORE SET quantity = 0 WHERE ingredient = ingredientIn;
 	 	ELSE
-	 		UPDATE STORE SET quantity = (currentQuantity + quantity) WHERE ingredient = ingredient;
+	 		UPDATE STORE SET quantity = (currentQuantity + quantityIn) WHERE ingredient = ingredientIn;
 	 	END IF;
 
 	END IF;
