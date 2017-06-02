@@ -207,18 +207,18 @@ if (!isset($_SESSION['user'])){
   <!--modal para incorporar nuevo ingrediente-->
   <div id="modal_ingredient" class="modal">
     <div class="modal-content">
-      <form name="form_ingredient" action="add_ingredient.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
+      <form name="form_ingredient" onsubmit="return validateIngredient()" action="add_ingredient.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
 
         <h4 class="center-align">Nuevo ingrediente</h4>
 
         <div class="input-field">
           <input type="text" name="nombre_ingrediente" id="nombre_ingrediente">
-          <label for="nombre_ingrediente">Ingrediente</label>
+          <label for="nombre_ingrediente">Ingrediente*</label>
         </div>
 
         <div class="input-field">
           <input type="text" name="cantidad_inicial" id="cantidad_inicial">
-          <label for="cantidad_inicial">Cantidad inicial</label>
+          <label for="cantidad_inicial">Cantidad inicial*</label>
         </div>      
 
         <button type="submit" class="btn waves-effect waves-light col s2 light-green darken-1 center-align">Guardar</button>
@@ -228,6 +228,49 @@ if (!isset($_SESSION['user'])){
   </div>
 
   <!--fin modal ingredientes-->
+
+  <!--modal para incorporar usuarios-->
+  <div id="modal_user" class="modal">
+    <div class="modal-content">
+      <form name="form_user" onsubmit="return validateUser()" action="add_user.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
+        
+        <h4 class="center-align">Nuevo usuario</h4>
+
+        <div class="input-field">
+          <input type="text" name="nombre_usuario" id="nombre_usuario">
+          <label for="nombre_usuario">Usuario*</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="pass_usuario" id="pass_usuario">
+          <label for="pass_usuario">Contraseña*</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="nombre" id="nombre">
+          <label for="nombre_usuario">Nombre*</label>
+        </div>
+        
+        <div class="input-field">
+          <input type="text" name="apellido" id="apellido">
+          <label for="apellido">Apellido*</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="direccion_email" id="direccion_email">
+          <label for="direccion_email">Email*</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="tipo_usuario" id="tipo_usuario">
+          <label for="tipo_usuario">Tipo de usuario (2->Empleado, 3->Usuario)*</label>
+        </div>
+
+        <button type="submit" class="btn waves-effect waves-light col s2 light-green darken-1 center-align">Guardar</button>
+
+      </form>
+    </div>
+  </div>
 
 
   <div class="navbar-fixed">
@@ -255,7 +298,6 @@ if (!isset($_SESSION['user'])){
       <li><a href="admin.php?type=users">Administrar usuarios</a></li>
       <li><a href="admin.php?type=store">Almacén</a></li>
       <li><a href="admin.php?type=reports">Informes</a></li>
-      <li><a href="admin.php?type=notifications">Avisos</a></li>
       <li><a href="admin.php?type=suggestions">Sugerencias</a></li>
     </ul>
   </div>
@@ -284,16 +326,13 @@ if (!isset($_SESSION['user'])){
     }
 
     elseif($_GET['type'] == 'users'){
-      echo "<center><p>Administrar usuarios</p></center>";
+      userView();
     }
     elseif($_GET['type'] == 'store'){
       almacenView();
     }
     elseif($_GET['type'] == 'reports'){
       echo "<center><p>Administrar informes</p></center>";
-    }
-    elseif($_GET['type'] == 'notifications'){
-      echo "<center><p>Administrar avisos</p></center>";
     }
     elseif($_GET['type'] == 'suggestions'){
       echo "<center><p>Administrar Sugerencias</p></center>";
@@ -307,10 +346,10 @@ if (!isset($_SESSION['user'])){
   function almacenView(){
     global $query, $conection;
 
-    echo '<div id="content" class="row">';
+    echo '<div id="container" class="row">';
     
-    echo '<h4 class="col s12">Inventario del almacén</h4>';
-    echo '<button id="add_ingredient" onclick="$(\'#modal_ingredient\').modal(\'open\')" class="btn waves-effect waves-light light-green darken-1">Nuevo ingrediente</button>';
+    echo '<h4 class="col s12 center-align">Inventario del almacén</h4>';
+    echo '<button id="add_ingredient" onclick="$(\'#modal_ingredient\').modal(\'open\')" class="btn waves-effect waves-light light-green darken-1 center-button">Nuevo ingrediente</button>';
     echo '<br><br><hr></div>';
 
     $sentence = "SELECT * FROM STORE";
@@ -328,11 +367,19 @@ if (!isset($_SESSION['user'])){
       echo       '<div class="card-content">';
       
       echo       '<p>'.$ingrediente['ingredient'].'</p>';
-      echo       '<p>'.$ingrediente['quantity'].'(kg/L)</p>';
+      echo       '<p>'.$ingrediente['quantity'].' kg / litros</p>';
       
       echo       '</div>';
       echo       '<div class="card-action">';
-      echo       '<button class="btn waves-effect waves-light light-green darken-1">Editar</button>';
+      echo       '<span><a href="delete_ingredient.php?ingredient='.$ingrediente['ingredient'].'" class="col s2 btn waves-effect waves-light light-green darken-1">Borrar</a></span>';
+
+      echo       '<form name="form_increment" onsubmit="return validateIncrement()" action="edit_ingredient.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">';
+      echo       '<span><input class="col s3 offset-s2" type="text" id="quantity" name="quantity"></span>';
+      echo       '<input type="hidden"  type="text" id="ingredient" name="ingredient" value="'.$ingrediente['ingredient'].'">';
+
+      echo       '<span><button type="submit" class="col s4 btn waves-effect waves-light light-green darken-1">Editar cantidad</a></span>';
+      echo       '</form>';
+
             
       echo '</div></div></div></div>';
     }
@@ -341,7 +388,50 @@ if (!isset($_SESSION['user'])){
 
   }
 
+  function userView(){
+    global $query, $conection;
 
+    echo '<div id="container" class="row">';
+    echo '<h4 class="col s12 center-align">Administración de usuarios</h4>';
+    echo '<button id="add_user" onclick="$(\'#modal_user\').modal(\'open\')" class="btn waves-effect waves-light light-green darken-1 center-button">Nuevo usuario</button>';
+    echo '<br><br><hr></div>';
+
+    $sentence = "SELECT * FROM USERS WHERE type > 1";
+
+    $query = mysqli_query($conection, $sentence) or die(ERROR_CONSULTA_DB);
+    
+    if(mysqli_num_rows($query) == 0){
+      echo '<h4 class="no_result center-align">No hay ningún usuario registrado</h4>';      
+    }
+
+    while($usuario = mysqli_fetch_array($query)) {
+      echo '<div class="col s12 m7">';
+      echo   '<div class="card horizontal">';
+      echo     '<div class="card-stacked">';
+      echo       '<div class="card-content">';
+      
+      
+      echo       '<p> Usuario: '.$usuario['user'].'</p>';
+      echo       '<p> Contraseña: '.$usuario['pass'].'</p>';
+      echo       '<p> Nombre: '.$usuario['first_name'].'</p>';
+      echo       '<p> Apellido: '.$usuario['last_name'].'</p>';
+      echo       '<p> Email: '.$usuario['email'].'</p>';
+
+      if($usuario['type'] == 2){
+        echo       '<p> Tipo: Empleado</p>';
+      }
+      else{
+        echo       '<p> Tipo: Usuario</p>';
+      }
+      
+      
+      echo       '</div>';
+      echo       '<div class="card-action">';
+      echo       '<a href="delete_user.php?user='.$usuario['user'].'" class="btn waves-effect waves-light light-green darken-1">Borrar</a>';
+            
+      echo '</div></div></div></div>';
+    }
+  }
 
 
 
@@ -359,9 +449,11 @@ if (!isset($_SESSION['user'])){
     }
     else{
       echo '<div class="row" id="container">';
-      echo '<button onclick="$(\'#modal_menu\').modal(\'open\')" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Crear nuevo menú</button>';
 
       echo '<h4 class="col s12 center-align">Menú actual</h4>';
+      echo '<button onclick="$(\'#modal_menu\').modal(\'open\')" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Crear nuevo menú</button>';
+
+      
 
       $menu = mysqli_fetch_array($query);
 
@@ -421,7 +513,7 @@ if (!isset($_SESSION['user'])){
       echo '<div class="col s6">Cena 1: ' . $menu['saturday_dinner1'] . '</div>';
 
       echo '<div class="col s6">Comida 2: ' . $menu['saturday_lunch2'] . '</div>';
-      echo '<div class="col s6">Cena 2: ' . $menu['satruday_dinner2'] . '</div>';
+      echo '<div class="col s6">Cena 2: ' . $menu['saturday_dinner2'] . '</div>';
 
 
 

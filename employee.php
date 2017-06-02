@@ -75,7 +75,6 @@ if (!isset($_SESSION['user'])){
       <li><a href="employee.php?type=menus">Asignar menú</a></li>
       <li><a href="employee.php?type=users">Administrar usuarios</a></li>
       <li><a href="employee.php?type=reports">Informes</a></li>
-      <li><a href="employee.php?type=notifications">Avisos</a></li>
     </ul>
   </div>
 
@@ -104,13 +103,12 @@ if (!isset($_SESSION['user'])){
     }
 
     elseif($_GET['type'] == 'users'){
-      echo "<center><p>Administrar usuarios</p></center>";
+
+      userView();
+
     }
     elseif($_GET['type'] == 'reports'){
       echo "<center><p>Administrar informes</p></center>";
-    }
-    elseif($_GET['type'] == 'notifications'){
-      echo "<center><p>Administrar avisos</p></center>";
     }
     else{
       echo "<center><p>WTF</p></center>";
@@ -352,6 +350,52 @@ if (!isset($_SESSION['user'])){
 
    }
 }
+
+
+function userView(){
+    global $query, $conection;
+
+    echo '<div id="container" class="row">';
+    echo '<h4 class="col s12 center-align">Administración de usuarios</h4>';
+    echo '<button id="add_user" onclick="$(\'#modal_user\').modal(\'open\')" class="btn waves-effect waves-light light-green darken-1 center-button">Nuevo usuario</button>';
+    echo '<br><br><hr></div>';
+
+    $sentence = "SELECT * FROM USERS WHERE type > 2";
+
+    $query = mysqli_query($conection, $sentence) or die(ERROR_CONSULTA_DB);
+    
+    if(mysqli_num_rows($query) == 0){
+      echo '<h4 class="no_result center-align">No hay ningún usuario registrado</h4>';      
+    }
+
+    while($usuario = mysqli_fetch_array($query)) {
+      echo '<div class="col s12 m7">';
+      echo   '<div class="card horizontal">';
+      echo     '<div class="card-stacked">';
+      echo       '<div class="card-content">';
+      
+      
+      echo       '<p> Usuario: '.$usuario['user'].'</p>';
+      echo       '<p> Contraseña: '.$usuario['pass'].'</p>';
+      echo       '<p> Nombre: '.$usuario['first_name'].'</p>';
+      echo       '<p> Apellido: '.$usuario['last_name'].'</p>';
+      echo       '<p> Email: '.$usuario['email'].'</p>';
+
+      if($usuario['type'] == 2){
+        echo       '<p> Tipo: Empleado</p>';
+      }
+      else{
+        echo       '<p> Tipo: Usuario</p>';
+      }
+      
+      
+      echo       '</div>';
+      echo       '<div class="card-action">';
+      echo       '<a href="delete_user.php?user='.$usuario['user'].'" class="btn waves-effect waves-light light-green darken-1">Borrar</a>';
+            
+      echo '</div></div></div></div>';
+    }
+  }
 
 
 

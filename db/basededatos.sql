@@ -22,6 +22,8 @@ CREATE TABLE USERS(
  	CONSTRAINT PRIMARY KEY(user)
 );
 
+ALTER TABLE USERS CHANGE last_name last_name VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL;
+ALTER TABLE USERS CHANGE first_name first_name VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL;
 
 
 CREATE TABLE MENUS(
@@ -87,7 +89,7 @@ CREATE TABLE MENU_FORMS(
 
 CREATE TABLE STORE(
  ingredient VARCHAR(100) NOT NULL,
- quantity FLOAT(7,4) NOT NULL, #litros/kilos hasta con cuatro decimales
+ quantity FLOAT(7,3) NOT NULL, #litros/kilos hasta con cuatro decimales
  CONSTRAINT PRIMARY KEY(ingredient)
 );
 
@@ -103,43 +105,6 @@ CREATE TABLE LOG(
 );
 
 #################### USER PROCEDURES ########################
-
-DELIMITER //
-CREATE PROCEDURE addUser
-	(IN user VARCHAR(50), 
-	IN pass VARCHAR(50),
-	IN first_name VARCHAR(50),
-	IN last_name VARCHAR(100),
-	IN email VARCHAR(100),
-	IN room VARCHAR(20),
-	IN company VARCHAR(50),
-	IN type INT)
-
-BEGIN
-
-	INSERT INTO USERS(
-		user,
-		pass,
-		first_name,
-		last_name,
-		email,
-		room,
-		company,
-		type
-	)
-	VALUES(
-		user,
-		pass,
-		first_name,
-		last_name,
-		email,
-		room,
-		company,
-		type
-	);
-	
-END //
-DELIMITER ;
 
 
 DELIMITER //
@@ -175,10 +140,10 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE addIngredient
 	(IN ingredientIn VARCHAR(100),
-	IN quantityIn FLOAT(7,4))
+	IN quantityIn FLOAT(7,3))
 
 BEGIN
-	DECLARE currentQuantity FLOAT(7,4);
+	DECLARE currentQuantity FLOAT(7,3);
 
 	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredientIn) = 0)
 	THEN 
@@ -194,11 +159,11 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE removeIngredient
 	(IN ingredientIn VARCHAR(100),
-	IN quantityIn FLOAT(7,4))
+	IN quantityIn FLOAT(7,3))
 
 BEGIN
 
-	DECLARE currentQuantity FLOAT(7,4);
+	DECLARE currentQuantity FLOAT(7,3);
 
 	IF((SELECT COUNT(*) FROM STORE WHERE ingredient = ingredientIn) > 0)
 	THEN 
@@ -460,7 +425,7 @@ VALUES(
 	'bfernm04',
 	'891995',
 	'Borja',
-	'Fernández Morán',
+	'Fernandez Moran',
 	'borja@borja.es',
 	3
 );
