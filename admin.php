@@ -332,7 +332,7 @@ if (!isset($_SESSION['user'])){
       almacenView();
     }
     elseif($_GET['type'] == 'reports'){
-      echo "<center><p>Administrar informes</p></center>";
+      informesView();
     }
     elseif($_GET['type'] == 'suggestions'){
       echo "<center><p>Administrar Sugerencias</p></center>";
@@ -383,9 +383,6 @@ if (!isset($_SESSION['user'])){
             
       echo '</div></div></div></div>';
     }
-    
-  
-
   }
 
   function userView(){
@@ -432,8 +429,6 @@ if (!isset($_SESSION['user'])){
       echo '</div></div></div></div>';
     }
   }
-
-
 
   function menuContent(){
     global $query, $conection,$nombre_usuario, $pass;
@@ -534,9 +529,17 @@ if (!isset($_SESSION['user'])){
     mysqli_free_result($query);
 
     mysqli_close($conection);
+  }
 
+  function informesView(){
+
+
+    echo '<h4 class="no_result center-align">Pulse para generar los informes del último menú</h4>';
+
+    echo '<a href="generador_informes.php" target="_blank" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Generar informes</a>';
 
   }
+
 ?>
 
 
