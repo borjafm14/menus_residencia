@@ -55,3 +55,15 @@ function validateIncrement(){
 
 	return true;
 }
+
+
+function validateSuggestion(){
+	var txt;
+	txt = document.forms["form_suggestion"]["suggestion"].value;
+
+	if(txt == "") {
+		return false;
+	}
+
+	return true;
+}

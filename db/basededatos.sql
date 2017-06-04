@@ -7,6 +7,7 @@ drop table if exists MENUS;
 drop table if exists MENU_FORMS;
 drop table if exists LOG;
 drop table if exists STORES;
+drop table if exists SUGGESTIONS;
 
 CREATE TABLE USERS(
  	user VARCHAR(50) NOT NULL, #nombre de usuario unico para la aplicacion
@@ -15,8 +16,8 @@ CREATE TABLE USERS(
  	last_name VARCHAR(100) NOT NULL,
  	email VARCHAR(100) NULL,
  	room VARCHAR(20) NULL,
- 	company VARCHAR(100) NULL, #si nos da por que se puedan registrar varias empresas,saber a cuál pertenece cada usuario
- 	type INT NOT NULL, #1 para el jefazo, 2 para empleados, 3 para el resto
+ 	company VARCHAR(100) NULL, #en caso de que se puedan registrar varias empresas, se registra a cuál pertenece cada usuario
+ 	type INT NOT NULL, #1 para el jefe, 2 para empleados, 3 para el resto
  	id_menu INT NULL, #guardará el menú actual del usuario
  	fecha_hora DATETIME NOT NULL DEFAULT NOW(),
  	CONSTRAINT PRIMARY KEY(user)
@@ -101,6 +102,14 @@ CREATE TABLE LOG(
  fecha_movimiento DATETIME NOT NULL DEFAULT NOW(),
  tipo_movimiento VARCHAR(30) NOT NULL,
  tipo_usuario VARCHAR(20) NOT NULL,
+ CONSTRAINT PRIMARY KEY(id)
+);
+
+
+CREATE TABLE SUGGESTIONS(
+ id INT NOT NULL AUTO_INCREMENT,
+ sugerencia TEXT NOT NULL,
+ nom_usuario VARCHAR(50) NOT NULL,
  CONSTRAINT PRIMARY KEY(id)
 );
 

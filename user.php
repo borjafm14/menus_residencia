@@ -102,19 +102,13 @@ if (!isset($_SESSION['user'])){
     }
 
     elseif($_GET['type'] == 'suggestions'){
-      echo "<center><p>Administrar Sugerencias</p></center>";
+      suggestionContent();
     }
     else{
       echo "<center><p>WTF</p></center>";
     }
 
-
-    
-
   }
-
-
-
 
 
   function menuContent(){
@@ -396,6 +390,26 @@ if (!isset($_SESSION['user'])){
     
 
     mysqli_close($conection);
+  }
+
+
+  function suggestionContent(){
+    echo '<div id="container" class="row">';
+    
+    echo '<h4 class="col s12 center-align">¡Envíanos tus sugerencias!</h4>';
+    echo '<br><br><hr></div>';
+
+    echo '<form name="form_suggestion" onsubmit="return validateSuggestion()" action="add_suggestion.php" accept-charset="utf-8" method="POST" enctype="multipart/form-data">
+          
+          <div class="input-field col s12">
+            <textarea name="suggestion" id="suggestion" class="materialize-textarea"></textarea>
+            <label for="suggestion">Escriba aquí su sugerencia</label>
+          </div>      
+    
+          <button type="submit" class="btn waves-effect waves-light col s3 light-green darken-1 center-button">Enviar</button>
+    
+        </form>';
+
 
 
   }

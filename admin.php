@@ -335,13 +335,12 @@ if (!isset($_SESSION['user'])){
       informesView();
     }
     elseif($_GET['type'] == 'suggestions'){
-      echo "<center><p>Administrar Sugerencias</p></center>";
+      suggestionsView();
     }
     else{
       echo "<center><p>WTF</p></center>";
     }
   }
-
 
   function almacenView(){
     global $query, $conection;
@@ -532,14 +531,36 @@ if (!isset($_SESSION['user'])){
   }
 
   function informesView(){
-
-
     echo '<h4 class="no_result center-align">Pulse para generar los informes del último menú</h4>';
 
     echo '<a href="generador_informes.php" target="_blank" class="btn waves-effect waves-light col s2 light-green darken-1 center-button">Generar informes</a>';
+  }
 
+  function suggestionsView(){
+    global $query, $conection;
+
+    echo '<div id="container" class="row">';
+    
+    echo '<h4 class="col s12 center-align">Sugerencias de los usuarios</h4>';
+    echo '<br><br><hr>';
+
+    $sentence = "SELECT * FROM SUGGESTIONS";
+
+    $query = mysqli_query($conection, $sentence) or die(ERROR_CONSULTA_DB);
+    
+    if(mysqli_num_rows($query) == 0){
+      echo '<h4 class="no_result center-align">No hay ninguna sugerencia registrada.</h4>';      
+    }
+
+    while($suggestion = mysqli_fetch_array($query)) {
+      echo '<div class="boxed-div row">
+              <p>'.$suggestion['sugerencia'].'</p>
+              <span><a href="delete_suggestion.php?id='.$suggestion['id'].'" class="col s5 btn waves-effect waves-light light-green darken-1">Borrar</a></span>           
+          
+            </div>';
+    }
+
+    echo '</div>';
   }
 
 ?>
-
-
