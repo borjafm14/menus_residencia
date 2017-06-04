@@ -39,8 +39,15 @@ function validateUser(){
 	  Materialize.toast("Se deben rellenar todos los campos", 3000, "light-green darken-1");
 	  return false;
 	}
+	else if(tipo_usuario != 2 && tipo_usuario != 3){
+	  Materialize.toast("El tipo de usuario introducido no es correcto", 3000, "light-green darken-1");
+	  return false;
+	}
+	else{
+	  return true;
+	}
 
-	return true;
+	
 }
 
 

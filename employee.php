@@ -155,12 +155,12 @@ if (!isset($_SESSION['user'])){
       echo '<br><h5 id="table" class="col s12">Lunes</h5>';
 
       echo '<div class="col s6">';
-      echo '<input name="comidalunes" type="radio" id="comidalunes1" value="'.$menu['monday_lunch1'].'"/>';
+      echo '<input name="comidalunes" type="radio" checked="checked" id="comidalunes1" value="'.$menu['monday_lunch1'].'"/>';
       echo '<label for="comidalunes1">Comida 1: '. $menu['monday_lunch1'] . '</label>';
       echo '</div>';
 
       echo '<div class="col s6">';
-      echo '<input name="cenalunes" type="radio" id="cenalunes1" value="'.$menu['monday_dinner1'].'"/>';
+      echo '<input name="cenalunes" type="radio" checked="checked" id="cenalunes1" value="'.$menu['monday_dinner1'].'"/>';
       echo '<label for="cenalunes1">Cena 1: '. $menu['monday_dinner1'] . '</label>';
       echo '</div>';
 
@@ -179,12 +179,12 @@ if (!isset($_SESSION['user'])){
       echo '<br><h5 id="table" class="col s12">Martes</h5>';
 
        echo '<div class="col s6">';
-      echo '<input name="comidamartes" type="radio" id="comidamartes1" value="'.$menu['tuesday_lunch1'].'"/>';
+      echo '<input name="comidamartes" type="radio" checked="checked" id="comidamartes1" value="'.$menu['tuesday_lunch1'].'"/>';
       echo '<label for="comidamartes1">Comida 1: '. $menu['tuesday_lunch1'] . '</label>';
       echo '</div>';
 
       echo '<div class="col s6">';
-      echo '<input name="cenamartes" type="radio" id="cenamartes1" value="'.$menu['tuesday_dinner1'].'"/>';
+      echo '<input name="cenamartes" type="radio" checked="checked" id="cenamartes1" value="'.$menu['tuesday_dinner1'].'"/>';
       echo '<label for="cenamartes1">Cena 1: '. $menu['tuesday_dinner1'] . '</label>';
       echo '</div>';
 
@@ -203,12 +203,12 @@ if (!isset($_SESSION['user'])){
       echo '<br><h5 id="table" class="col s12">Miércoles</h5>';
 
        echo '<div class="col s6">';
-      echo '<input name="comidamiercoles" type="radio" id="comidamiercoles1" value="'.$menu['wednesday_lunch1'].'"/>';
+      echo '<input name="comidamiercoles" type="radio" checked="checked" id="comidamiercoles1" value="'.$menu['wednesday_lunch1'].'"/>';
       echo '<label for="comidamiercoles1">Comida 1: '. $menu['wednesday_lunch1'] . '</label>';
       echo '</div>';
 
       echo '<div class="col s6">';
-      echo '<input name="cenamiercoles" type="radio" id="cenamiercoles1" value="'.$menu['wednesday_dinner1'].'"/>';
+      echo '<input name="cenamiercoles" type="radio" checked="checked" id="cenamiercoles1" value="'.$menu['wednesday_dinner1'].'"/>';
       echo '<label for="cenamiercoles1">Cena 1: '. $menu['wednesday_dinner1'] . '</label>';
       echo '</div>';
 
@@ -226,12 +226,12 @@ if (!isset($_SESSION['user'])){
       echo '<br><h5 id="table" class="col s12">Jueves</h5>';
 
        echo '<div class="col s6">';
-      echo '<input name="comidajueves" type="radio" id="comidajueves1" value="'.$menu['thursday_lunch1'].'"/>';
+      echo '<input name="comidajueves" type="radio" checked="checked" id="comidajueves1" value="'.$menu['thursday_lunch1'].'"/>';
       echo '<label for="comidajueves1">Comida 1: '. $menu['thursday_lunch1'] . '</label>';
       echo '</div>';
 
       echo '<div class="col s6">';
-      echo '<input name="cenajueves" type="radio" id="cenajueves1" value="'.$menu['thursday_dinner1'].'"/>';
+      echo '<input name="cenajueves" type="radio" checked="checked" id="cenajueves1" value="'.$menu['thursday_dinner1'].'"/>';
       echo '<label for="cenajueves1">Cena 1: '. $menu['thursday_dinner1'] . '</label>';
       echo '</div>';
 
@@ -250,12 +250,12 @@ if (!isset($_SESSION['user'])){
       echo '<br><h5 id="table" class="col s12">Viernes</h5>';
 
        echo '<div class="col s6">';
-      echo '<input name="comidaviernes" type="radio" id="comidaviernes1" value="'.$menu['friday_lunch1'].'"/>';
+      echo '<input name="comidaviernes" type="radio" checked="checked" id="comidaviernes1" value="'.$menu['friday_lunch1'].'"/>';
       echo '<label for="comidaviernes1">Comida 1: '. $menu['friday_lunch1'] . '</label>';
       echo '</div>';
 
       echo '<div class="col s6">';
-      echo '<input name="cenaviernes" type="radio" id="cenaviernes1" value="'.$menu['friday_dinner1'].'"/>';
+      echo '<input name="cenaviernes" type="radio" checked="checked" id="cenaviernes1" value="'.$menu['friday_dinner1'].'"/>';
       echo '<label for="cenaviernes1">Cena 1: '. $menu['friday_dinner1'] . '</label>';
       echo '</div>';
 
