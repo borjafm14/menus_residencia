@@ -1,0 +1,143 @@
+
+/*admin, employee y user phps*/
+#navbar{
+  --height: 100px;
+  --line-height: 100px;
+  background-color: #37474f;
+}
+
+#navbar-fixed{
+  padding-bottom: 75px;
+}
+
+.logo-mini{
+  margin: 5px;
+  margin-left: 10px;
+  width: 65px;
+  border-radius: 5px;
+}
+
+.img{
+	width: 40px;
+	display: inline; 
+}
+
+.no_result{
+  /*margin-left: 475px;*/
+  margin-top: 150px;
+  color: #757575;
+}
+
+.center-button{
+  margin-top: 20px !important;
+  margin-left: 435px !important;
+}
+
+#content{
+  margin-left: 200px;
+}
+
+#container{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#table{
+  margin-top: 30px;
+}
+
+.material-icons:hover{
+	color: #7cb342 !important;
+}
+
+.title-navbar{
+	font-size: 18px;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+#menu li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#menu li a:hover {
+    background-color: #7cb342;
+    color: white;
+}
+
+#menu{
+    padding-top:15px;
+    height: 100%;
+    position: fixed;
+    background-color: #f1f1f1;
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #7cb342;
+}
+.input-field input[type=password]:focus + label {
+    color: #7cb342;
+}
+
+
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #7cb342;
+    box-shadow: 0 1px 0 0 #7cb342;
+}
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #7cb342;
+    box-shadow: 0 1px 0 0 #7cb342;
+}
+
+
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #7cb342;
+}
+
+
+[type="radio"]:checked + label:before {
+border-radius: 50%;
+border: 2px solid #7cb342; 
+}
+
+[type="radio"]:checked + label:after {
+border-radius: 50%;
+border: 2px solid #7cb342;
+background-color: #7cb342;
+}
+
+.boxed-div {
+    width: 700px;
+    border: 2px solid #7cb342;
+    padding: 25px;
+    margin: 25px;
+}
+
+/* label focus color */
+.input-field textarea:focus + label {
+  color: #7cb342 !important;
+}
+
+/* label underline focus color */
+.input-field textarea:focus {
+  border-bottom: 1px solid #7cb342 !important;
+  box-shadow: 0 1px 0 0 #7cb342 !important
+}
